@@ -1,0 +1,11 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+<table class="table table-hover table-sm"><thead>
+<tr><th>Titre</th><th>Description</th><th>img</th><th>Détails</th></tr>
+</thead><tbody>
+{% for projet in projetsParticipes %}
+      <tr><td>{{pro.titre}}</td><td>{{pro.description}}</td><td>{{pro.image}}</td><td><form method="get" action="index.php"><input type="hidden" value="{{pro.idprojet}}" name="id"><button  name="action" value="detail" class="btn btn-primary" type="submit">Voir</button></form></td></tr>
+{% endfor %}
+</tbody></table>
+{% endblock %}

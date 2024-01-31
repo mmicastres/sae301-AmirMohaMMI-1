@@ -1,0 +1,72 @@
+
+{% extends "index.html.twig" %}
+
+{% block section %}
+<form method="post" action="index.php" class="well">
+   <fieldsetclass="form-group">
+    <legend>Nouveau Projet</legend>
+    <div class="form-group row">
+      <label for="titre" class="col-sm-2 col-form-label col-form-label-sm">titre</label>
+      <div class="col-sm-10">
+        <input  type="text" id="titre" class="form-control form-control-sm" name="titre" required placeholder="titre" />
+      </div>
+    </div>
+   
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label col-form-label-sm">description</label>
+      <div class="col-sm-10">
+        <input type="text" id="description" class="form-control form-control-sm" name="description" required placeholder="description"/>
+      </div>
+    </div>
+   <div class="form-group row">
+	   <label for="image" class="col-sm-2 col-form-label col-form-label-sm">image</label>
+	   <div class="col-sm-10">
+		 <input  type="file" id="image" class="form-control form-control-sm" name="image" required placeholder=""/>
+	   </div>
+	 </div>
+    <div class="form-group row">
+      <label for="demolink" class="col-sm-2 col-form-label col-form-label-sm">demolink</label>
+      <div class="col-sm-10">
+        <input type="text" min="0" id="demolink" class="form-control form-control-sm" name="demolink" required placeholder="demolink"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="sourceslink" class="col-sm-2 col-form-label col-form-label-sm">sourceslink</label>
+      <div class="col-sm-10">
+        <input type="text" min="0" id="sourceslink" class="form-control form-control-sm" name="sourceslink" required placeholder="sourceslink"/>
+      </div>
+    </div>
+      <div class="form-group row">
+      <label for="categorie" class="col-sm-2 col-form-label col-form-label-sm">categorie</label>
+       <select id="categorie" name="idcategorie">
+        {% for pro in pros %}
+            <option value="{{ pro.idcategorie }}">{{ pro.nomcategorie }}</option>
+        {% endfor %}
+    </select>
+      {# <div class="col-sm-10">
+        <input  type="text" id="categorie" class="form-control form-control-sm" name="categorie" required placeholder="categorie" />
+      </div> #}
+    </div>
+      <div class="form-group row">
+      <label for="contexte" class="col-sm-2 col-form-label col-form-label-sm">contexte</label>
+      
+        <select id="contexte" name="idcontexte">
+        {% for pro in pross %}
+            <option value="{{ pro.idcontexte }}">{{ pro.identifiant }}</option>
+        {% endfor %}
+    </select>
+    
+    </div>
+
+   
+    <!-- idmembre = 11 tantque pas de connexxion
+    <input  type="hidden" id="idmembre" name="idmembre" value="11"/>  
+   -->
+    <!-- idmembre = celui de l'utilisateur connecté    -->
+    <input  type="hidden" id="idprojet" name="idprojet" value="{{ idprojet }}"/> 
+ 
+
+	  <input type="submit" class="btn btn-primary" name="valider_ajout" value="valider"/>
+   </fieldset>
+   </form>
+{% endblock %}
